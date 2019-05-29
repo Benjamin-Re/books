@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Success!
+    Failure!
 {% endblock %}
 
 {% block body %}
-    <h1>Success!</h1>
+    <h1>Failure {{ code }}</h1>
+    {{ message }}
 
-    Hooray!
 {% endblock %}

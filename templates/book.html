@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Details
+{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+<ul>
+    <li>title: {{ title }}</li>
+    <li>author: {{ author }}</li>
+    <li>isbn: {{ isbn }}</li>
+    <li>year: {{ year }}</li>
+    <li>average rating: {{ average_rating }}</li>
+    <li>ratings count: {{ ratings_count }}</li>
+</ul>
+<h1>Leave a Review:</h1>
+<form action="{{ url_for('review', title=title, author=author, isbn=isbn, year=year) }}" method = "post">
+    <div class="form-group">
+        <input type="number" class="form-control" name="rating" min="1" max="5" placeholder="1-5">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="review" placeholder="Leave your opinion here">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<h1>Reviews about this book:</h1>
+<div class="container">{{ user }}
+    <table class="table">
+      <tr><th>rating</th><th>review</th><th>username</th></tr>
+      {% for pp in package %}
+        <tr>
+            {% for p in pp %}
+                <td>{{ p }}</td>
+           {% endfor %}
+      {% endfor %}
+    </table>
+</div>
+{% endblock %}

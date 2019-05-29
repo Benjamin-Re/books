@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    <h1>Logged in as {{ name }} </h1>
+    <h2>Your personal notes</h2>
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note }}
+            </li>
+        {% endfor %}
+    </ul>
+    <!-- notes -->
+    <form action="{{ url_for('dashboard') }}" method="POST">
+        <input type="text" class="form-control" name="note" placeholder="comment here">
+        <button>Add note</button>
+    </form>
+    <br>
+    <!-- search -->
+    <form action="{{ url_for('search') }}" method="POST">
+        <input type="text" class="form-control" name="search" placeholder="search">
+        <button>Search book</button>
+    </form>
+
+
+
+{% endblock %}
